@@ -163,6 +163,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Dal\DataLayer.cs" />
+    <Compile Include="Dal\IDataLayer.cs" />
     <Compile Include="Models\ItemCategory.cs" />
     <Compile Include="Models\VmCategoriesIndex.cs" />
     <Compile Include="Global.asax.cs">
