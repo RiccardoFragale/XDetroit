@@ -4,6 +4,6 @@ namespace XDetroit.WebFrontend.Models
 {
     public class VmCategoriesIndex
     {
-        public List<ItemCategory> Categories;
+        public ICollection<ItemCategory> Categories;
     }
 }
