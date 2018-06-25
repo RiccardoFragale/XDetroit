@@ -18,7 +18,9 @@ namespace XDetroit.Testing.Behavioural
             IDataLayer dataLayer = new DataLayer(dataProvider);
             var behaviourResult = dataLayer.GetCategories(10, 0);
 
-            Assert.IsTrue(behaviourResult.Value.Any());
+            Assert.AreEqual("sample", behaviourResult.Value.First().Name);
         }
+
+
     }
 }
