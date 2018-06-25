@@ -10,7 +10,7 @@ namespace XDetroit.Testing.Behavioural
         [Test]
         public void TheRequestedPageOfCategoriesShouldBeReturned()
         {
-            IDataLayer dataLayer = new DataLayer();
+            IDataLayer dataLayer = new DataLayer(new DataProvider());
             var categories = dataLayer.GetCategories(10, 0);
 
             Assert.IsTrue(categories.Any());
