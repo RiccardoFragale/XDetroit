@@ -1,0 +1,29 @@
+﻿@using XDetroit.WebFrontend.Models
+@model VmCategoriesIndex
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (ItemCategory item in Model.Categories)
+    {
+        <tr>
+            <td>@item.Name</td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+        </tr>
+    }
+</table>
