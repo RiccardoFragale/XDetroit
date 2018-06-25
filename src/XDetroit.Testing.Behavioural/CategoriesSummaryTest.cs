@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using XDetroit.WebFrontend.Dal;
+using XDetroit.WebFrontend.Models;
 
 namespace XDetroit.Testing.Behavioural
 {
@@ -10,10 +11,14 @@ namespace XDetroit.Testing.Behavioural
         [Test]
         public void TheRequestedPageOfCategoriesShouldBeReturned()
         {
-            IDataLayer dataLayer = new DataLayer(new DataProvider());
-            var categories = dataLayer.GetCategories(10, 0);
+            var dataProvider = new InMemoryDataProvider();
+            dataProvider.CreateEntity(new ItemCategory { Name = "sample" });
+            dataProvider.SaveChanges();
 
-            Assert.IsTrue(categories.Any());
+            IDataLayer dataLayer = new DataLayer(dataProvider);
+            var behaviourResult = dataLayer.GetCategories(10, 0);
+
+            Assert.IsTrue(behaviourResult.Value.Any());
         }
     }
 }

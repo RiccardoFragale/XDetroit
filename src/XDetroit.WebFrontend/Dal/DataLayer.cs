@@ -14,9 +14,14 @@ namespace XDetroit.WebFrontend.Dal
             this.dataProvider = dataProvider;
         }
 
-        public ICollection<ItemCategory> GetCategories(int pageSize, int pageNumber)
+        public BehaviourResult<ICollection<ItemCategory>> GetCategories(int pageSize, int pageNumber)
         {
-            return dataProvider.GetEntities<ItemCategory>().ToList();
+            var returnValue = new BehaviourResult<ICollection<ItemCategory>>
+            {
+                Value = dataProvider.GetEntities<ItemCategory>().ToList()
+        };
+
+            return returnValue;
         }
     }
 }
