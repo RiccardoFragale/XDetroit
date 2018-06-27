@@ -6,5 +6,6 @@ namespace XDetroit.WebFrontend.Dal
     public interface IDataLayer
     {
         BehaviourResult<ICollection<ItemCategory>> GetCategories(int pageSize, int pageNumber);
+        BehaviourResult<ItemCategory> CreateCategory(ItemCategory model);
     }
 }

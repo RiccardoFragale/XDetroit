@@ -24,5 +24,17 @@ namespace XDetroit.WebFrontend.Dal
 
             return returnValue;
         }
+
+        public BehaviourResult<ItemCategory> CreateCategory(ItemCategory model)
+        {
+            var returnValue = new BehaviourResult<ItemCategory>
+            {
+                Value = dataProvider.CreateEntity(model)
+            };
+
+            dataProvider.SaveChanges();
+
+            return returnValue;
+        }
     }
 }
