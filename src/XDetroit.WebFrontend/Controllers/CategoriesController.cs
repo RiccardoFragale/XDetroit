@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using XDetroit.WebFrontend.Dal;
 using XDetroit.WebFrontend.Models;
 
@@ -30,7 +29,7 @@ namespace XDetroit.WebFrontend.Controllers
 
         public ActionResult Create()
         {
-            throw new System.NotImplementedException();
+            return View();
         }
     }
 }
