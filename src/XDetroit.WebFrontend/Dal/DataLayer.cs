@@ -19,7 +19,7 @@ namespace XDetroit.WebFrontend.Dal
             int skipCount = pageSize * pageNumber;
             var returnValue = new BehaviourResult<ICollection<ItemCategory>>
             {
-                Value = dataProvider.GetEntities<ItemCategory>().Skip(skipCount).Take(pageSize).ToList()
+                Value = dataProvider.GetEntities<ItemCategory>().OrderBy(x=>x.Id).Skip(skipCount).Take(pageSize).ToList()
             };
 
             return returnValue;

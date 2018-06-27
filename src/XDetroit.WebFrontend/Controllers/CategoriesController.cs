@@ -21,7 +21,7 @@ namespace XDetroit.WebFrontend.Controllers
         {
             var viewModel = new VmCategoriesIndex
             {
-                Categories = dataLayer.GetCategories(10, 1).Value
+                Categories = dataLayer.GetCategories(10, 0).Value
             };
 
             return View(viewModel);
@@ -31,5 +31,17 @@ namespace XDetroit.WebFrontend.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(VmCategoryCreate model)
+        {
+            if (ModelState.IsValid)
+            {
+                dataLayer.CreateCategory(model.Category);
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
