@@ -2,7 +2,6 @@
 using System.Linq;
 using NUnit.Framework;
 using XDetroit.WebFrontend.Dal;
-using XDetroit.WebFrontend.Models;
 
 namespace XDetroit.Testing.Behavioural
 {

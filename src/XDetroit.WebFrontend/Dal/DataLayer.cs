@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using XDetroit.WebFrontend.Extensions;
 using XDetroit.WebFrontend.Models;
 
 namespace XDetroit.WebFrontend.Dal
@@ -16,10 +17,9 @@ namespace XDetroit.WebFrontend.Dal
 
         public BehaviourResult<ICollection<ItemCategory>> GetCategories(int pageSize, int pageNumber)
         {
-            int skipCount = pageSize * pageNumber;
             var returnValue = new BehaviourResult<ICollection<ItemCategory>>
             {
-                Value = dataProvider.GetEntities<ItemCategory>().OrderBy(x=>x.Id).Skip(skipCount).Take(pageSize).ToList()
+                Value = dataProvider.GetEntities<ItemCategory>().OrderBy(x => x.Id).Page(pageSize, pageNumber).ToList()
             };
 
             return returnValue;
@@ -37,9 +37,14 @@ namespace XDetroit.WebFrontend.Dal
             return returnValue;
         }
 
-        public BehaviourResult<ICollection<ProductItem>> GetProducts()
+        public BehaviourResult<ICollection<ProductItem>> GetProducts(int pageSize, int pageNumber)
         {
-            throw new NotImplementedException();
+            var returnValue = new BehaviourResult<ICollection<ProductItem>>
+            {
+                Value = dataProvider.GetEntities<ProductItem>().OrderBy(x => x.Id).Page(pageSize, pageNumber).ToList()
+            };
+
+            return returnValue;
         }
     }
 }

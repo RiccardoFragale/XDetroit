@@ -22,7 +22,7 @@ namespace XDetroit.WebFrontend.Controllers
         {
             var productsSummary = new VmProductsIndex
             {
-                Products = dataLayer.GetProducts().Value
+                Products = dataLayer.GetProducts(10, 0).Value
             };
 
             return View(productsSummary);

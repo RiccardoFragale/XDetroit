@@ -52,6 +52,13 @@ namespace XDetroit.WebFrontend.Dal
                     var entityItem = entityList[i];
                     var entityItemType = entityItem.GetType();
                     PropertyInfo property = entityItemType.GetProperty("Id");
+
+                    if (property == null)
+                    {
+                        throw new ApplicationException(
+                            $"Entity format invalid. Entity {entityItem.GetType().Name} is missing the Id property.");
+                    }
+
                     property.SetValue(entityItem, i + 1);
                 }
             }
