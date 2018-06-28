@@ -14,7 +14,7 @@ namespace XDetroit.Testing.Behavioural
         [SetUp]
         public void Setup()
         {
-            dataProvider = new InMemoryDataProvider();
+            dataProvider = new InMemoryDataProvider<AppContext>();
             dataLayer = new DataLayer(dataProvider);
         }
 

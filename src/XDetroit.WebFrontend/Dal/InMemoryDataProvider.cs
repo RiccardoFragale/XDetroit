@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 
 namespace XDetroit.WebFrontend.Dal
 {
-    public class InMemoryDataProvider : IDataProvider
+    public class InMemoryDataProvider<TContext> : IDataProvider where TContext : AppContext
     {
         private Dictionary<Type, List<object>> entities = new Dictionary<Type, List<object>>();
         private int Changes;
+        private NavigationPropertiesGenerator<TContext> ONavigationPropertiesGenerator;
+
+        public InMemoryDataProvider()
+        {
+            ONavigationPropertiesGenerator = new NavigationPropertiesGenerator<TContext>(entities);
+        }
 
         public IQueryable<T> GetEntities<T>() where T : class
         {
@@ -18,7 +25,14 @@ namespace XDetroit.WebFrontend.Dal
             {
                 var list = entities[type];
                 IEnumerable<T> entityCollection = list.Cast<T>();
-                returnValue = entityCollection;
+
+                var populatedEntities = new List<T>();
+                foreach (T entity in entityCollection)
+                {
+                    populatedEntities.Add(ONavigationPropertiesGenerator.PopulateNavigationProperties(entity));
+                }
+
+                returnValue = populatedEntities;
             }
 
             return returnValue.AsQueryable();
