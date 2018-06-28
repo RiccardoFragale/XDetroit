@@ -1,4 +1,6 @@
-﻿namespace XDetroit.WebFrontend.Models
+﻿using XDetroit.WebFrontend.Dal;
+
+namespace XDetroit.WebFrontend.Models
 {
     public class VmCategoryCreate
     {

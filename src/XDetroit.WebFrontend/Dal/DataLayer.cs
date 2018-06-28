@@ -36,5 +36,10 @@ namespace XDetroit.WebFrontend.Dal
 
             return returnValue;
         }
+
+        public BehaviourResult<ICollection<ProductItem>> GetProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

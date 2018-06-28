@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace XDetroit.WebFrontend.Models
+namespace XDetroit.WebFrontend.Dal
 {
     public class ItemCategory
     {

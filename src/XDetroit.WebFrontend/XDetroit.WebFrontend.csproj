@@ -173,14 +173,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Models\VmProductsIndex.cs" />
     <Compile Include="Dal\AppContext.cs" />
+    <Compile Include="Dal\ProductItem.cs" />
     <Compile Include="Dal\SqlDataProvider.cs" />
     <Compile Include="Models\BehaviourResult.cs" />
     <Compile Include="Dal\DataLayer.cs" />
     <Compile Include="Dal\InMemoryDataProvider.cs" />
     <Compile Include="Dal\IDataLayer.cs" />
     <Compile Include="Dal\IDataProvider.cs" />
-    <Compile Include="Models\ItemCategory.cs" />
+    <Compile Include="Dal\ItemCategory.cs" />
     <Compile Include="Models\VmCategoriesIndex.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,6 +238,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

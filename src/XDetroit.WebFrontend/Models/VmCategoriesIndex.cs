@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using XDetroit.WebFrontend.Dal;
 
 namespace XDetroit.WebFrontend.Models
 {

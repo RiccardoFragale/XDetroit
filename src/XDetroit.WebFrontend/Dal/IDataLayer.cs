@@ -7,5 +7,6 @@ namespace XDetroit.WebFrontend.Dal
     {
         BehaviourResult<ICollection<ItemCategory>> GetCategories(int pageSize, int pageNumber);
         BehaviourResult<ItemCategory> CreateCategory(ItemCategory model);
+        BehaviourResult<ICollection<ProductItem>> GetProducts();
     }
 }
