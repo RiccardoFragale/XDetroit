@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace XDetroit.WebFrontend.Dal
@@ -8,5 +9,7 @@ namespace XDetroit.WebFrontend.Dal
 
         [Required]
         public string Name { get; set; }
+
+        public ICollection<ProductItem> ColProducts { get; set; }
     }
 }

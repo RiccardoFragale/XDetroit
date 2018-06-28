@@ -52,6 +52,13 @@ namespace XDetroit.WebFrontend.Dal
                     PropertyInfo entityPropertyInfo = entity.GetType().GetProperty(property.Name);
                     entityPropertyInfo.SetValue(entity, value);
                 }
+                else
+                {
+                    if (isCollection)
+                    {
+                        throw new ApplicationException("It looks like an entity is missing in the DbContext. Maybe you forget to add a DbSet property?");
+                    }
+                }
             }
 
             return entity;

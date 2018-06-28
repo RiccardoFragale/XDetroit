@@ -36,6 +36,24 @@ namespace XDetroit.Testing.Behavioural
         }
 
         [Test]
+        public void TheCategoryShouldIncludeNaivgationPropertiesWhenRetrievedFromDataLayer()
+        {
+            var category = dataProvider.CreateEntity(new ItemCategory { Name = "sample category" });
+            dataProvider.SaveChanges();
+
+            dataProvider.CreateEntity(new ProductItem { Name = "sample product 1", ExtCategoryId = category.Id });
+            dataProvider.CreateEntity(new ProductItem { Name = "sample product 2", ExtCategoryId = category.Id });
+            dataProvider.SaveChanges();
+
+            var behaviourResult = dataLayer.GetCategories(10, 0);
+
+            Assert.AreEqual(2,
+                behaviourResult.Value
+                    .Single(x => x.Name.Equals(category.Name, StringComparison.InvariantCultureIgnoreCase)).ColProducts
+                    .Count, "Products count is incorrect.");
+        }
+
+        [Test]
         public void CreateCategoryShouldPersistNewCategory()
         {
             dataLayer.CreateCategory(new ItemCategory
