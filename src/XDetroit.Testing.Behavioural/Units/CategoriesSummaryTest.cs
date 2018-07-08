@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
+using XDetroit.Testing.Behavioural.Doubles;
 using XDetroit.WebFrontend.Dal;
 
-namespace XDetroit.Testing.Behavioural
+namespace XDetroit.Testing.Behavioural.Units
 {
     [TestFixture]
     public class CategoriesSummaryTest

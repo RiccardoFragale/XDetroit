@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 
-namespace XDetroit.WebFrontend.Dal
+namespace XDetroit.Testing.Behavioural.Doubles
 {
     public class NavigationPropertiesGenerator<TContext> where TContext : DbContext
     {

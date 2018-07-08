@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using XDetroit.WebFrontend.Dal;
 
-namespace XDetroit.WebFrontend.Dal
+namespace XDetroit.Testing.Behavioural.Doubles
 {
     public class InMemoryDataProvider<TContext> : IDataProvider where TContext : AppContext
     {
@@ -40,6 +42,11 @@ namespace XDetroit.WebFrontend.Dal
         public T CreateEntity<T>(T entity) where T : class
         {
             Init<T>();
+
+            if (entity is IEnumerable)
+            {
+                throw new ArgumentException("Argument cannot be a collection.");
+            }
 
             entities[typeof(T)].Add(entity);
             Changes++;

@@ -1,5 +1,4 @@
 using System.Linq;
-using XDetroit.WebFrontend.Models;
 
 namespace XDetroit.WebFrontend.Dal
 {

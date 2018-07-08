@@ -174,7 +174,8 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Dal\NavigationPropertiesGenerator.cs" />
+    <Compile Include="Dal\IDataLayer.cs" />
+    <Compile Include="Dal\IDataProvider.cs" />
     <Compile Include="Extensions\Paging.cs" />
     <Compile Include="Models\VmProductsIndex.cs" />
     <Compile Include="Dal\AppContext.cs" />
@@ -182,9 +183,6 @@
     <Compile Include="Dal\SqlDataProvider.cs" />
     <Compile Include="Models\BehaviourResult.cs" />
     <Compile Include="Dal\DataLayer.cs" />
-    <Compile Include="Dal\InMemoryDataProvider.cs" />
-    <Compile Include="Dal\IDataLayer.cs" />
-    <Compile Include="Dal\IDataProvider.cs" />
     <Compile Include="Dal\ItemCategory.cs" />
     <Compile Include="Models\VmCategoriesIndex.cs" />
     <Compile Include="Global.asax.cs">
