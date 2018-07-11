@@ -155,11 +155,17 @@ namespace XDetroit.Testing.Behavioural.Doubles
 
             if (entities != null && entities.Any())
             {
-                string navigationPropertyTypeName = GetPropertyNameForType(propertyType, entityType);
+                string foreignKeyPropertyName = GetPropertyNameForType(propertyType, entityType);
 
-                string foreignKeyPropertyTypeName = $"{navigationPropertyTypeName}Id";
-                ;
-                returnValue = entities.Where(x => x.GetType().GetProperty(foreignKeyPropertyTypeName).GetValue(x) == id).ToList();
+                if (string.IsNullOrWhiteSpace(foreignKeyPropertyName))
+                {
+                    throw new ApplicationException(
+                        $"Entity format invalid. Entity {entity.GetType().Name} is missing the foreign key properties.");
+                }
+
+                string foreignKeyIdPropertyName = $"{foreignKeyPropertyName}Id";
+
+                returnValue = entities.Where(x => x.GetType().GetProperty(foreignKeyIdPropertyName).GetValue(x) == id).ToList();
             }
 
             return returnValue;
