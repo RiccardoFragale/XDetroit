@@ -25,7 +25,46 @@ namespace XDetroit.Testing.Behavioural.Doubles
             new List<object>()
         };
 
+        [Test]
+        public void FindEntityShouldReturnTheFoundEntity()
+        {
+            IDataProvider dataProvider = new InMemoryDataProvider<AppContext>();
 
+            ItemCategory category = new ItemCategory
+            {
+                Name = "testCategory"
+            };
 
+            var persistedCategory = dataProvider.CreateEntity(category);
+            dataProvider.SaveChanges();
+
+            var foundEntity = dataProvider.Find<ItemCategory>(persistedCategory.Id);
+
+            Assert.AreEqual(persistedCategory.Id,foundEntity.Id );
+        }
+
+        [Test]
+        public void UpdateEntityShouldReturnTheFoundEntity()
+        {
+            IDataProvider dataProvider = new InMemoryDataProvider<AppContext>();
+
+            ItemCategory category = new ItemCategory
+            {
+                Name = "testCategory"
+            };
+
+            var persistedCategory = dataProvider.CreateEntity(category);
+            dataProvider.SaveChanges();
+            var foundEntity = dataProvider.Find<ItemCategory>(persistedCategory.Id);
+            Assert.AreEqual("testCategory", foundEntity.Name);
+
+            persistedCategory.Name = "updatedName";
+
+            dataProvider.UpdateEntity(persistedCategory);
+            dataProvider.SaveChanges();
+            foundEntity = dataProvider.Find<ItemCategory>(persistedCategory.Id);
+
+            Assert.AreEqual("updatedName", foundEntity.Name);
+        }
     }
 }

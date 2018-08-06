@@ -22,6 +22,18 @@ namespace XDetroit.WebFrontend.Dal
             return DbContext.Set<T>();
         }
 
+        public T Find<T>(int id) where T : class
+        {
+            return DbContext.Set<T>().Find(id);
+        }
+
+        public T UpdateEntity<T>(T entity) where T : class
+        {
+            DbContext.Entry(entity).State = EntityState.Modified;
+
+            return entity;
+        }
+
         public int SaveChanges()
         {
             return DbContext.SaveChanges();
