@@ -35,9 +35,6 @@ namespace $rootnamespace$.Providers
 
                 if (EntitiesTypesNames.Contains(navigationPropertyType.Name))
                 {
-                    object navigationPropertyValue = property.GetValue(entity);
-                    if (navigationPropertyValue != null) continue;
-
                     object value;
                     if (isCollection)
                     {
@@ -66,16 +63,16 @@ namespace $rootnamespace$.Providers
         public IList GetCollectionNavigationPropertyValue<TEntity, TProperty>(TEntity entity, Type entityPropertyType)
             where TEntity : class
         {
-            List<object> collectionNavigationProperties = GetCollectionNavigationProperty(entity, entityPropertyType);
+            List<object> collectionItems = GetCollectionNavigationPropertyItems(entity, entityPropertyType);
 
             IList typedList = null;
-            if (collectionNavigationProperties != null && collectionNavigationProperties.Any())
+            if (collectionItems != null && collectionItems.Any())
             {
                 var listType = typeof(List<>);
                 Type genericListType = listType.MakeGenericType(entityPropertyType);
                 typedList = (IList)Activator.CreateInstance(genericListType);
 
-                foreach (TProperty item in collectionNavigationProperties)
+                foreach (TProperty item in collectionItems)
                 {
                     typedList.Add(item);
                 }
@@ -129,21 +126,18 @@ namespace $rootnamespace$.Providers
             dynamic returnValue = null;
             if (foreignKeyProperty != null)
             {
-                var foreignKeyId = foreignKeyProperty.GetValue(entity).ToString();
+                var foreignKeyId = Convert.ToInt32(foreignKeyProperty.GetValue(entity));
 
-                int id;
-                int.TryParse(foreignKeyId, out id);
-
-                if (id > 0)
+                if (foreignKeyId > 0)
                 {
-                    returnValue = GetEntities(propertyInfo.PropertyType).Single(x => x.GetType().GetProperty("Id").GetValue(x) == id);
+                    returnValue = GetEntities(propertyInfo.PropertyType).Single(x => x.GetType().GetProperty("Id").GetValue(x) == foreignKeyId);
                 }
             }
 
             return returnValue;
         }
 
-        public List<object> GetCollectionNavigationProperty<TEntity>(TEntity entity, Type propertyType)
+        public List<object> GetCollectionNavigationPropertyItems<TEntity>(TEntity entity, Type propertyType)
             where TEntity : class
         {
             Type entityType = entity.GetType();
@@ -180,7 +174,12 @@ namespace $rootnamespace$.Providers
                 string propertyTypeName = property.PropertyType.Name;
                 bool isCollection = IsCollectionTypeName(propertyTypeName);
 
-                string entityPropertyTypeName = GetNavigationPropertyType(isCollection, property).Name;
+                if (isCollection)
+                {
+                    continue;
+                }
+
+                string entityPropertyTypeName = GetNavigationPropertyType(false, property).Name;
 
                 if (propertyType.Name.Equals(entityPropertyTypeName, StringComparison.InvariantCultureIgnoreCase))
                 {

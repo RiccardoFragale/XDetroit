@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using XDetroit.WebFrontend.Interfaces;
 
@@ -33,6 +34,11 @@ namespace XDetroit.WebFrontend.Dal
             DbContext.Entry(entity).State = EntityState.Modified;
 
             return entity;
+        }
+
+        public IEnumerable<T> CreateEntities<T>(IEnumerable<T> entities) where T : class
+        {
+            return DbContext.Set<T>().AddRange(entities);
         }
 
         public int SaveChanges()

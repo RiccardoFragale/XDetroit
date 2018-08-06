@@ -34,6 +34,12 @@ namespace $rootnamespace$.Providers
         //    return entity;
         //}
 
+		//public IEnumerable<T> CreateEntities<T>(IEnumerable<T> entities) where T : class
+        //{
+        //    return DbContext.Set<T>().AddRange(entities);
+        //}
+
+
         //public int SaveChanges()
         //{
         //    return DbContext.SaveChanges();
