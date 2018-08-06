@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
-using XDetroit.Testing.Behavioural.Doubles;
+using XDetroit.Testing.Behavioural.Providers;
 using XDetroit.WebFrontend.Dal;
+using XDetroit.WebFrontend.Interfaces;
 
 namespace XDetroit.Testing.Behavioural.Units
 {

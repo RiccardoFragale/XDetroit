@@ -175,7 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Dal\IDataLayer.cs" />
-    <Compile Include="Dal\IDataProvider.cs" />
+    <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Extensions\Paging.cs" />
     <Compile Include="Models\VmProductsIndex.cs" />
     <Compile Include="Dal\AppContext.cs" />

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using XDetroit.WebFrontend.Dal;
+using XDetroit.WebFrontend.Interfaces;
 
-namespace XDetroit.Testing.Behavioural.Doubles
+namespace XDetroit.Testing.Behavioural.Providers
 {
     [TestFixture]
     class InMemoryDataProviderTests

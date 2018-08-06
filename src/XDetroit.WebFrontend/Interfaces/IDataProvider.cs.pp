@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace XDetroit.WebFrontend.Dal
+namespace $rootnamespace$.Interfaces
 {
     public interface IDataProvider
     {

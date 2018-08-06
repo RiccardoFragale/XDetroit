@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>InMemDub</id>
+    <version>1.0.0</version>
+    <authors>Riccardo Fragale</authors>
+    <owners>Riccardo Fragale</owners>
+    <licenseUrl>https://github.com/RiccardoFragale/XDetroit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/RiccardoFragale/XDetroit</projectUrl>    
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>In-memory double for unit testing with ORMs</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>TDD Detroit ORM Entity Framework Double Fake Unit Testing</tags>
+  </metadata>
+  <files>
+    <file src="XDetroit.Testing.Behavioural\Providers\readme.txt" target="content\readme.txt" />
+    <file src="XDetroit.Testing.Behavioural\Providers\InMemoryDataProvider.cs.pp" target="content\Providers" />
+    <file src="XDetroit.Testing.Behavioural\Providers\NavigationPropertiesGenerator.cs.pp" target="content\Providers" />
+    <file src="XDetroit.WebFrontend\Interfaces\IDataProvider.cs.pp" target="content\Interfaces" />
+    <file src="XDetroit.WebFrontend\Dal\SampleDataProvider.cs.pp" target="content\Providers" />
+  </files>
+</package>

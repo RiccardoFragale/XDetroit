@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using XDetroit.WebFrontend.Interfaces;
 
 namespace XDetroit.WebFrontend.Dal
 {

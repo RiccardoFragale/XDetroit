@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using XDetroit.WebFrontend.Dal;
+using $rootnamespace$.Interfaces;
 
-namespace XDetroit.Testing.Behavioural.Doubles
+namespace $rootnamespace$.Providers
 {
-    public class InMemoryDataProvider<TContext> : IDataProvider where TContext : AppContext
+    public class InMemoryDataProvider<TContext> : IDataProvider
     {
         private Dictionary<Type, List<object>> entitiesCollections = new Dictionary<Type, List<object>>();
         private int Changes;

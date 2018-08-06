@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 
-namespace XDetroit.Testing.Behavioural.Doubles
+namespace $rootnamespace$.Providers
 {
-    public class NavigationPropertiesGenerator<TContext> where TContext : DbContext
+    public class NavigationPropertiesGenerator<TContext>
     {
         readonly Dictionary<Type, List<object>> Entities;
         private readonly List<string> EntitiesTypesNames;
@@ -15,7 +14,7 @@ namespace XDetroit.Testing.Behavioural.Doubles
         public NavigationPropertiesGenerator(Dictionary<Type, List<object>> entities)
         {
             EntitiesTypesNames = typeof(TContext).GetProperties().AsEnumerable()
-                .Where(x => x.PropertyType.Name.Equals(typeof(DbSet<>).Name, StringComparison.InvariantCultureIgnoreCase))
+                .Where(x => x.PropertyType.Name.Equals("DbSet`1", StringComparison.InvariantCultureIgnoreCase))
                 .Select(x => x.PropertyType.GetGenericArguments()[0].Name).ToList();
 
             Entities = entities;
